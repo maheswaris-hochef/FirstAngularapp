@@ -1,0 +1,55 @@
+<!DOCTYPE  html>
+<html  ng-app="customerlist">
+	<head>
+		
+		<title>Customers</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+         <script src = "angular.min.js"></script>
+         <script src = "getCustomerDetails_http.js"></script>
+
+	
+	</head>
+
+	<body>
+	    <div class="container" ng-controller="getcustomer">
+
+	    <h1>Customer List</h1>
+	
+         <table class="table">
+          <thead>
+               <tr>
+
+                    <th> Name </th>
+                    <th> Email </th>
+                    <th> Mobile </th>
+                    <th> Action </th>
+
+               </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <td><input class="form-control" ng-model="customer.cust_name"></td>
+                <td><input class="form-control" ng-model="customer.cust_emailid"></td>
+                <td><input class="form-control" ng-model="customer.cust_mobile"></td>
+                <td> <button class="btn btn-primary" ng-click="AddCust(customer.cust_name,customer.cust_mobile,customer.cust_emailid)">Add</button></td>
+                  <td> <button class="btn btn-primary" ng-click="UpdateCust(customer.cust_id,customer.cust_name,customer.cust_mobile,customer.cust_emailid)">Update
+                  </button></td>
+              </tr>
+              <tr ng-repeat="customer in customerlist">
+                 <td> {{customer.cust_name}} </td>
+                 <td> {{customer.cust_emailid}} </td>
+                 <td> {{customer.cust_mobile}} </td>
+                  <td> <button class="btn btn-danger" ng-click="EditCust(customer.cust_id)">Edit</button></td>
+                   
+                 <td> <button class="btn btn-danger" ng-click="DelCust(customer.cust_id)">Remove</button></td>
+              </tr>
+
+          </tbody>
+         </table>
+		</div>
+		
+	</body>
+</html>
